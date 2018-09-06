@@ -2,7 +2,7 @@ Title: Montana Indigency Calculator
 Author: Dylan Barrett
 Before:<link rel="stylesheet" type="text/css" href="https://suffolklitlab.org/howto/qna/style/style.css">
 <div id="icon" style="background-size: 110px 99px;background-image: url('https://suffolklitlab.org/howto/qna/images/maxheadroom.gif');"></div>
-<h2 style="text-align:center;">[State Name] Indigency Calculator</h2>
+<h2 style="text-align:center;">[Montana] Indigency Calculator</h2>
 <p><b>This is a <a href="http://www.codingthelaw.org/">class project</a>. You should not rely on it as a source of legal information. It is likely incomplete.</b></p>
 <p>Answer the following questions to see if someone qualifies for appointment of counsel.</p>
 
@@ -13,7 +13,7 @@ Q(2): Has the Defendant retained private counsel?
 A: Yes
 	Q(2.1):GOTO:FAIL
 A: No
-	Q(2.2):GOTO:3	
+	Q(2.2):GOTO:3
 Q(3): Does income received by the Defendant and any individuals in the Defendant's household, including all public benefits received by the same individuals or by the Defendant, meet or fall below 130% of the Federal Poverty Guidelines?
 A: Yes
 	Q(3.1):GOTO:PASS
