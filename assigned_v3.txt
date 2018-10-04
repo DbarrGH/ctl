@@ -1,0 +1,111 @@
+Title: Montana Indigency Calculator
+Author: Dylan Barrett
+Before: <input type="hidden" name="name" value="Interview Summary"/>
+<input type="hidden" name="docx_uri" value="https://dbarrgh.github.io/ctl/test9.docx"/>
+
+
+<link rel="stylesheet" type="text/css" href="https://suffolklitlab.org/howto/qna/style/style.css">
+<div id="icon" style="background-size: 110px 99px;background-image: url('https://suffolklitlab.org/howto/qna/images/maxheadroom.gif');"></div>
+<h2 style="text-align:center;">Montana Indigency Calculator</h2>
+<p><b>This is a <a href="http://www.codingthelaw.org/">class project</a>. You should not rely on it as a source of legal information. It is likely incomplete.</b></p>
+<p>Answer the following questions to see if someone qualifies for appointment of counsel.</p>
+After:
+<script>
+function fedpov(household,income,percentage){
+	// Determines if your income is less than or equal to
+	// a percentage of the 2018 federal poverty guidelines
+	// for the contiguous United States. See
+	// https://www.federalregister.gov/documents/2018/01/18/2018-00814/annual-update-of-the-hhs-poverty-guidelines
+
+		var line = NaN;
+
+		if (household == 1) {
+			line = 12140;
+		} else if (household == 2) {
+			line = 16460;
+		} else if (household == 3) {
+			line = 20780;
+		} else if (household == 4) {
+			line = 25100;
+		} else if (household == 5) {
+			line = 29420;
+		} else if (household == 6) {
+			line = 33740;
+		} else if (household == 7) {
+			line = 38060;
+		} else if (household == 8) {
+			line = 42380;
+		} else if (household > 8) {
+			line = 42380 + (household-8)*4320;
+		}
+
+		if (income <= (line*(percentage/100))) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+</script>
+
+	<!-- Source - http://publicdefender.mt.gov/Portals/61/Policies/100%20Public%20Defender%20Operations/105-IndigencyPolicy.pdf?ver=2018-02-09-120035-437×tamp=1536800639092; as well as classroom resources provided for this assignment. -->
+
+Q(1): These questions will help determine whether the state will appoint the defendant counsel, based on the Defendant's indigence status. Click "Begin" to get started.
+A: Begin
+	Q(1.1):GOTO:2-Private_Counsel
+Q(2-Private_Counsel): Does the Defendant have private counsel at this time?
+A: Yes
+	Q(2.1):GOTO:EXPLANATION
+A: No
+	Q(2.2):GOTO:presumed_eligible
+Q(presumed_eligible): Does the Defendant currently receive any of the following public benefits? <ul>
+																					<li>TANF?</li> 
+																					<li>Food Stamps/SNAP?</li>
+																					<li>SSI?</li>
+																				   </ul>
+A: Yes
+	Q(3.1):GOTO:MAYBE
+A: No
+	Q(3.2):GOTO:six_months
+Q(six_months): In the last six months, has the Defendant been approved for appointed counsel due to presumptive eligibility, presumptive indigence, or insufficient household gross income? 
+A: Yes
+	Q(4.1):GOTO:PASS
+A: No
+	Q(4.2):GOTO:household
+Q(household): How many individuals reside in the Defendant's household? <b>Please Count ALL Residents!</b>
+X:number
+	Q(income): Enter the Defendant's total gross annual household income.
+<ul>
+  <li>Food Stamps/SNAP</li>
+  <li>TANF or WIC</li>
+  <li>Social Security - including SSI and SSDI</li>
+  <li>Veteran's benefits or disability</li>
+  <li>Unemployment</li>
+  <li>Worker's compensation</li>
+  <li>Pension/retirement</li>
+  <li>Child support</li>
+</ul>
+	X[javascript:if(fedpov(getvar('household'),getvar('income'),130)){goto('PASS')} else {goto('FAIL')}]:number
+Q(PASS): The Defendant qualifies as Indigent and may apply for state appointed counsel.
+A[http://publicdefender.mt.gov/Portals/61/Forms/General/ApplicationForm.pdf]: Click here to download an application for state appointed counsel.
+A[http://publicdefender.mt.gov/]: Click here to visit the Montana Public Defender's Office
+A:[javascript:submit2('http://colarusso.pythonanywhere.com/','GET','','','','json_doc','_blank')] Click here to download a brief summary of this interview.
+	Q(6.3):GOTO:PASS
+Q(FAIL): The Defendant's gross household income is greater than 130% of the Federal poverty guideline, and he or she may not qualify for state appointed counsel. It is possible the Defendant may still qualify if the costs of private representation would incur "substantial hardship" upon his or her household. Follow the link below to learn more.
+A[http://publicdefender.mt.gov/Portals/61/Policies/100%20Public%20Defender%20Operations/105-IndigencyPolicy.pdf?ver=2018-02-09-120035-437%C3%97tamp=1536800639092]: Click here to see Montana "hardship" requirements for obtaining state appointed counsel when a Defendant's income is above 130% of the Federal poverty guideline.
+A:[javascript:submit2('http://colarusso.pythonanywhere.com/','GET','','','','json_doc','_blank')] Click here to download a brief summary of this interview.
+Q(MAYBE): The Defendant may qualify as indigent or partially indigent, and should apply for state appointed counsel for a determination.
+A[http://publicdefender.mt.gov/Portals/61/Forms/General/ApplicationForm.pdf]: Download an application for state appointed counsel.
+A[http://publicdefender.mt.gov/]: Visit the Montana Public Defender's Office Website.
+A: Save a copy of this result.
+	DOC(8.3): Defendant's that qualify for and receive public benefits such as TANF, Food Stamps/SNAP, or SSDI are "presumed eligible" and may qualify as indigent or partially indigent, and should apply for state appointed counsel for a determination.
+	Q(8.3): Click below.
+	A[javascript:save2('defendant_presumed_eligible.txt',doc());]: DOWNLOAD
+		Q(8.3.1):GOTO:MAYBE
+Q(EXPLANATION): The Defendant is disqualified from obtaining a state appointed attorney as long as the Defendant retains private counsel. 
+A: Save a copy of this result.
+	DOC(9.1):The Defendant is disqualified from obtaining state appointed counsel as long as the Defendant retains private counsel.
+	Q(9.1): Click below.
+	A[javascript:save2('list.txt',doc());]: DOWNLOAD
+		Q(9.1.1):GOTO:2-Private_Counsel
+
+
