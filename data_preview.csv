@@ -1,0 +1,5 @@
+name,sex,DoB,call_id,person_ID,attorney,body_part_1,body_part_2,body_part_3,body_part_4,body_part_5,surgery,injury_date,intake,take,Facebook,Google,Other,referal,website,take injury requiring surgery
+0,Penelope Lewis,1,1990-08-31,136,100,Patty Hewes,Head,,,,,1,2015-11-27,2017-02-06,2,1,0,0,0,0,0
+1,David Anthony,2,1971-10-14,137,101,Patty Hewes,hands,elbow,,,,1,2014-06-30,2017-02-07,2,0,0,0,1,0,0
+2,Ida Shipp,1,1962-05-24,138,102,Rachel Zane,hip,arm,foot/feet,,,2,2016-04-22,2017-02-07,2,0,0,0,0,0,1
+3,Joanna Moore,1,2017-03-10,139,103,Perry Mason,EYE,ankle,,,,2,2015-08-12,2017-02-08,1,0,1,0,0,0,0
