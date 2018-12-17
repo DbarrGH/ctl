@@ -1,0 +1,108 @@
+Title: Small Firm Efficiency and Security Interview
+Author: Dylan C. Barrett
+Description: This is Class project for Suffolk University Law School <a href= "http://www.codingthelaw.org/">http://www.codingthelaw.org/</a>
+Before:
+<h1 style="text-align:center;">Small Firm Efficiency and Security Q&A</h1><p style="text-align:center;"><a href="http://www.codingthelaw.org/">Coding the Law</a><br>Suffolk University Law School, Fall 2018</p>
+
+Q(intro): Do <b>NOT</b> rely on this interview or treat this interview as legal advice! This interview is a class project and is likely incomplete.
+<p>This is a <a href="http://www.codingthelaw.org/">Coding the Law</a> class project for Suffolk University Law School, Fall 2018</p>
+
+A: <b>By clicking here, I am confirming that I understand:</b>
+	<ol type="1">
+ <li>this Q&A is a class project;</li>
+ <li>it does not constitute legal advice; and;</li>
+ <li>I should not rely on the information provided in this Q&A.</li>
+ </ol>
+
+	Q(email_request): Please provide your email address so I am able to send you the results of this interview.
+	X:
+		Q(email_request_1):GOTO:end
+	A: I would rather not provide this.
+		Q(email_request_2):GOTO:case_management
+
+Q(case_management): Do you make use of a <b>case management</b> software?
+A: Yes
+	Q(case_management_1):GOTO:cm_exclusive
+A: No
+	Q(case_management_2):GOTO:work_personal_computer
+
+Q(cm_exclusive): Do you use case management service as an exclusive means of...?
+A: Sending Client Documents
+	Q(cm_exclusive_1):GOTO:work_personal_computer
+A: Storing client documents.
+	Q(cm_exclusive_storing_client_docs):GOTO:client_docs_email
+A: Storing and Sending Client Documents.
+	Q(cm_exclusive_3):GOTO:end
+A: I use none of the above exclusively.
+	Q(cm_exclusive_4):GOTO:work_personal_computer
+
+Q(work_personal_computer): Do you store client documents on a work or personal computer? (Locally on the computer's hard drive?)
+A: Yes
+	Q(work_personal_computer_yes): Is this the only place that you store them?
+	A: Yes
+		Q(work_personal_computer_yes_2):GOTO:computer_pword
+A: No
+	Q(work_personal_computer_no):GOTO:store_docs
+
+Q(store_docs): Where do you store these documents?
+A: Cloud Storage Service
+	Q(cloud_access): Do others have access to this drive?
+	A: Yes
+		Q(cloud_access_2):GOTO:client_docs_email
+	A: No
+		Q(cloud_access_3):GOTO:client_docs_email
+A: Local Network Drive
+	Q(local_drive_access): Do others have access to this local drive?
+	A: Yes
+		Q(local_drive_access_2):GOTO:drive_pword
+	A: No
+		Q(local_drive_access_3):GOTO:client_docs_email
+A: Both
+
+Q(drive_pword): Is the drive password protected?
+A: Yes
+	Q(drive_pword_yes):GOTO:client_docs_email
+A: No
+	Q(docs_pword): Are documents or folders in the drive password protected?
+	A: Yes
+		Q(docs_pword_yes):GOTO:client_docs_email
+	A: No
+		Q(docs_pword_no):GOTO:client_docs_email
+
+Q(client_docs_email): Do you send sensitive client documents or information over email?
+<p> This includes information you have entered into the body of the E-Mail or information found within attached documents.</p>
+A: Yes
+	Q(client_docs_email_yes):GOTO:email_service
+A: No - <b>NEVER.</b>
+	Q(client_docs_email_no):GOTO:end
+
+Q(computer_pword): Is your computer password protected?
+A: Yes
+	Q(computer_pword_yes):GOTO:comp_lock
+A: No
+	Q(computer_pword_no):GOTO:local_docs_pword
+
+Q(local_docs_pword): Are the documents stored on your Mac or PC password protected, and/or are the folders the documents are kept in password protected or encrypted, or both?
+A: Yes
+	Q(local_docs_pword_yes):GOTO:comp_lock
+A: No
+	Q(local_docs_pword_no):GOTO:comp_lock
+
+Q(comp_lock): is your Mac or PC set to automatically lock?
+A: Yes
+	Q(comp_lock_yes):GOTO:client_docs_email
+A: No
+	Q(comp_lock_no):GOTO:client_docs_email
+
+Q(email_service): do you use a paid E-Mail service, or a free E-Mail provider?
+A: Paid
+	Q(email_service_paid):GOTO:email_service_used
+A: Free
+	Q(email_service_used_free):GOTO:end
+
+Q(email_service_used): Which of the following E-Mail services do you use?
+A: Gmail (Google Business)
+A: Outlook or Microsoft Live (Microsoft)
+A: Furnished by my Internet Service Provider
+
+Q(end): end interview placeholder
